@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from 'react';
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { location: 'cairo' };
+    this.fetchWeather = this.fetchWeather.bind(this);
+  }
+  fetchWeather() {
+    console.log('loading data...');
+    console.log(this);
+  }
+  render() {
+    return (
+      <div className="app">
+        <h1>Classy Weather</h1>
+        <div>
+          <input
+            type="text"
+            placeholder="Search for location..."
+            value={this.state.location}
+            onChange={e => this.setState({ location: e.target.value })}
+          />
+        </div>
+        <button onClick={this.fetchWeather}>Get Weather</button>
+      </div>
+    );
+  }
 }
-
 export default App;
